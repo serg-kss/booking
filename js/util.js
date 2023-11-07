@@ -1,72 +1,39 @@
-'use strict';
-
-/**
- * Getting a random integer number between two values.
- * @param {number} min First value.
- * @param {number} max Second value.
- * @returns {number}
- */
-const getRandomInt = (min, max) => {
-  return Math.floor(getRandomFloat(min, max, 1));
-};
-
-/**
- * Getting a random decimal number between two values with a given precision.
- * @param {number} min First value.
- * @param {number} max Second value.
- * @param {number} digits The number of digits to appear after the decimal point.
- * @returns {number}
- */
-const getRandomFloat = (min, max, digits) => {
-  if (min < 0) {
-    throw 'min value must be positive number.';
-  }
-
-  if (max < 0) {
-    throw 'max value must be positive number.';
-  }
-
-  if (max <= min) {
-    throw 'max value must be more than min.';
-  }
-
-  let result = max;
-  while (result === max) {
-    result = Math.random() * (max - min) + min;
-    result = parseFloat(result.toFixed(digits));
-  }
-
-  return result;
-};
-
-/**
- * Getting a random element from array.
- * @param {Array.<Object>} array An array for getting an element
- * @returns {Object}
- */
-const getRandomArrayElement = (array) =>  {
-  if (array.length === 0) {
-    return null;
-  }
-  return array[getRandomInt(0, array.length)];
-};
-
-
-/**
- * Getting a random count random unique elements from array.
- * @param {Array.<Object>} array An array for getting an elements
- * @returns {Array.<Object>}
- */
-const getRandomArrayElements = (array) => {
-  const result = [];
-
-  for (let i = 0; i <= getRandomInt(0, array.length); i++) {
-    result.push(getRandomArrayElement(array))
-  }
-
-  return result.filter((value, index, self) => {
-    return self.indexOf(value) === index;
-  });
+export function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-export {getRandomFloat, getRandomInt, getRandomArrayElement, getRandomArrayElements};
+export function getRndFloat(min, max) {
+  return Math.random() * (max - min + 1)  + min;
+}
+
+export function arrayRandElement(arr) {
+  let rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+}
+
+export function createRandSet(arr) {
+  let new_arr = []
+  for (let index = 0; index < Math.floor(Math.random() * arr.length); index++) {
+    new_arr.push(arrayRandElement(arr))
+  }
+  return new Set(new_arr);
+}
+
+export function createRandArr(arr) {
+  let new_arr = [];
+  for (let index = 0; index < Math.floor(Math.random() * arr.length); index++) {
+    new_arr.push(arrayRandElement(arr))
+  }
+  if (!new_arr.length) {
+    createRandArr(arr)
+  }
+  return new_arr;
+}
+
+export function assignmentValue(field, value, obj) {
+  for(let key in obj) {
+    if (key == value) {
+      field.placeholder = obj[key]
+    }
+  }
+}

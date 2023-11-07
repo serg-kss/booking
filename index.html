@@ -9,12 +9,9 @@
   <title>Кексобукинг</title>
 </head>
 <body>
-  <script src="leaflet/leaflet.js" defer></script>
-  <script type="module" src="js/main.js" defer></script>
-
   <main>
     <div class="promo">
-      <h1 class="promo__title visually-hidden">Keksobooking. Кексы по соседству</h1>
+      <h1 class="promo__title visually-hidden"> Кексы по соседству</h1>
       <img src="img/keksobooking.svg" alt="Keksobooking. Кексы по соседству" width="215" height="45">
     </div>
 
@@ -73,7 +70,7 @@
     <!-- Форма объявления -->
     <section class="notice">
       <h2 class="notice__title">Ваше объявление</h2>
-      <form class="ad-form" method="post" enctype="multipart/form-data" autocomplete="off">
+      <form class="ad-form" method="post" autocomplete="off">
         <fieldset class="ad-form-header">
           <legend class="ad-form-header__title">Ваша фотография (для карты)</legend>
           <div class="ad-form-header__upload">
@@ -231,5 +228,8 @@
     </div>
   </template>
 
+  <script defer type="module" src="./js/main.module.js"></script>
+  <script defer type="module" src="./js/cards.module.js"></script>
+  <script defer type="module" src="./js/create-card-form.module.js"></script>
 </body>
 </html>
