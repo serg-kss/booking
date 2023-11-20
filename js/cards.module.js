@@ -60,4 +60,4 @@ function createCards() {
   offers_block.append(fragment)
 }
 
-createCards();
+//createCards();

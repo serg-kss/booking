@@ -1,17 +1,30 @@
-import { appartments_price_min, max_price } from './data.js';
+import { appartments_price_min, max_price, title_validation } from './data.js';
 import { assignmentValue } from './util.js';
 
 const cardFormApplication = document.querySelector('.ad-form');
+const field_title = document.getElementById('title');
 const field_type = document.getElementById('type');
 const field_price = document.getElementById('price');
 const field_time_in = document.getElementById('timein');
 const field_time_out = document.getElementById('timeout');
 
-
+field_title.addEventListener('change', fieldTitleHandler);
 field_type.addEventListener('change', fieldTypeHandler);
 field_price.addEventListener('change', fieldPriceHandler);
 field_time_in.addEventListener('change', fieldTimeInHandler);
 field_time_out.addEventListener('change', fieldTimeOutHandler);
+
+function fieldTitleHandler(event) {
+  const field_value_lenght = String(event.target.value).length;
+  console.log(field_value_lenght)
+  if (field_value_lenght < title_validation.min_lenght) {
+    field_title.value = '';
+    alert('too short');
+  } else if (field_value_lenght > title_validation.max_lenght){
+    field_title.value = '';
+    alert('too long');
+  }
+}
 
 assignmentValue(field_price, field_type.value, appartments_price_min);
 

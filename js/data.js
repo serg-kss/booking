@@ -26,3 +26,7 @@ export const appartments_price_min = {
 export const max_price = 1000000;
 export const check_in_out_time = ['12:00', '13:00', '14:00'];
 export const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+export const title_validation = {
+  min_lenght: 30,
+  max_lenght: 100,
+}
