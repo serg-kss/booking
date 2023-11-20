@@ -14,6 +14,7 @@ field_price.addEventListener('change', fieldPriceHandler);
 field_time_in.addEventListener('change', fieldTimeInHandler);
 field_time_out.addEventListener('change', fieldTimeOutHandler);
 
+//title validation
 function fieldTitleHandler(event) {
   const field_value_lenght = String(event.target.value).length;
   console.log(field_value_lenght)
